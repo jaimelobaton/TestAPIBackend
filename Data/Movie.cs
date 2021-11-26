@@ -2,36 +2,25 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace TestAPIBackend.Data
 {
-    public class Movie
+    public partial class Movie
     {
         [Key]
-        [Column("ID")]
         public int Id { get; set; }
-
-        [Column("TITLE")]
+        [Required(ErrorMessage = "Title is required")]
         public string Title { get; set; }
-
-        [Column("ID_GENRER")]
-        public int? IdGenrer { get; set; }
-
-        [Column("DURATION")]
+        [Required(ErrorMessage = "Duration is required")]
         public int? Duration { get; set; }
-
-        [Column("RELEASEDATE")]
+        [Column(TypeName = "Date")]
         public DateTime? ReleaseDate  { get; set; }
-
-        [Column("LIKED")]
-        public bool? Liked { get; set; }
-
-        [Column("IDTYPELIST")]
-        public int? IdTypeList { get; set; }
-
-        [Column("CREATOR_USER")]
-        public int CreatorUser { get; set; }
+        public string CreatorUser { get; set; }
+        public int GenrerId { get; set; }
+        public virtual Genrer Genrer { get; set; }
+        public int StudioId { get; set; }
+        public virtual Studio Studio { get; set; }
+        public int DirectorId { get; set; }
+        public virtual Director Director { get; set; }
     }
 }

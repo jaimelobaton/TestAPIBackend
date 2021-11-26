@@ -16,6 +16,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TestAPIBackend.Authentication;
+using TestAPIBackend.Services;
 
 namespace TestAPIBackend
 {
@@ -37,8 +38,17 @@ namespace TestAPIBackend
             // For Entity Framework
             services.AddDbContext<TestDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("testConnection")));
 
+            services.AddTransient<IMovieService, MovieService>();
+            services.AddHttpContextAccessor();
             // For Identity
-            services.AddIdentity<ApplicationUser, IdentityRole>()
+            services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+            {
+                options.Password.RequiredLength = 10;
+                options.Password.RequireLowercase = true;
+                options.Password.RequireUppercase = true;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireDigit = false;
+            })
                 .AddEntityFrameworkStores<TestDbContext>()
                 .AddDefaultTokenProviders();
 
@@ -57,10 +67,9 @@ namespace TestAPIBackend
                 options.RequireHttpsMetadata = false;
                 options.TokenValidationParameters = new TokenValidationParameters()
                 {
-                    ValidateIssuer = true,
-                    ValidateAudience = true,
-                    ValidAudience = Configuration["JWT:ValidAudience"],
-                    ValidIssuer = Configuration["JWT:ValidIssuer"],
+                    ValidateIssuer = false,
+                    ValidateAudience = false,
+                    ClockSkew = TimeSpan.Zero,
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JWT:Secret"]))
                 };
             });
@@ -84,6 +93,7 @@ namespace TestAPIBackend
 
             app.UseRouting();
 
+             app.UseAuthentication(); // this one first
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
