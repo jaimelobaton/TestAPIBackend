@@ -39,6 +39,7 @@ namespace TestAPIBackend
             services.AddDbContext<TestDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("testConnection")));
 
             services.AddTransient<IMovieService, MovieService>();
+            services.AddTransient<IConfigService, ConfigService>();
             services.AddHttpContextAccessor();
             // For Identity
             services.AddIdentity<ApplicationUser, IdentityRole>(options =>

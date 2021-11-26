@@ -137,4 +137,13 @@ Take into consideration, if you want to test this API in POSTMAN or other API Cl
 Settings->Request
 
 
+http://localhost:48837/Config/getAllGenders
+
+
+http://localhost:48837/Config/getAllStudios
+
+http://localhost:48837/Config/getAllDirectors
+
+
+
 
