@@ -130,11 +130,17 @@ I used Swagger to share documentation.
 http://localhost:48837/swagger/index.html
 
 
-This  API is deployed in a publicly accessible URL
+This  API is deployed in a this public URL : https://godesarrollo.renovacionterritorio.gov.co/Test/
+
+example
 https://godesarrollo.renovacionterritorio.gov.co/Test/api/Authenticate/login
 
 Take into consideration, if you want to test this API in POSTMAN or other API Clients , you must disabled SSL certificate Verification.
 Settings->Request
+
+
+These methods help us to retrive all the data about Genders, Studios and Directors
+--No required Aunthentication
 
 
 http://localhost:48837/Config/getAllGenders
