@@ -2,6 +2,9 @@ Step By Step How to run this Project
 
 1- Clone the project  using this url :
 https://github.com/jaimelobaton/TestAPIBackend.git
+
+git clone https://github.com/jaimelobaton/TestAPIBackend.git
+
 This a public Project
 
 2-Change the connectionString in the appsettings.json file to your local Database. I worked with Sql Server.
