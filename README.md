@@ -142,7 +142,7 @@ Take into consideration, if you want to test this API in POSTMAN or other API Cl
 Settings->Request
 
 
-These methods help us to retrive all the data about Genders, Studios and Directors
+These methods help us to retrive all the data about Genders, Studios and Directors, Just in case you want to know their primary keys.
 --No required Aunthentication
 
 
