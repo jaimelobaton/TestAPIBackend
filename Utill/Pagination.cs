@@ -7,11 +7,7 @@ namespace TestAPIBackend.Utill
 {
     public class Pagination
     {
-        public Pagination(int pageNumber, int pageSize)
-        {
-            PageNumber = pageNumber;
-            PageSize = pageSize;
-        }
+        
 
         const int maxPageSize = 50;
         public int PageNumber { get; set; } = 1;
